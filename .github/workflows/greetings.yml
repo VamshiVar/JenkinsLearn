@@ -3,10 +3,11 @@ name: Greetings
 on:
   workflow_dispatch :
     inputs :
-      name :
-       description : "To Greet"
-       default : "Friends"
-       required : true
+      org:
+        description: "invoking org"
+        required: false
+        type: string
+        default: "None"
 jobs:
   greeting:
     runs-on: ubuntu-latest
