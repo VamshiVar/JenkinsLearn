@@ -18,6 +18,10 @@ on:
         required: false
         type: string
         default: "None"
+
+concurrency:
+  group: FrontEnd
+  cancel-in-progress: true
 jobs:
   greeting:
     runs-on: ubuntu-latest
