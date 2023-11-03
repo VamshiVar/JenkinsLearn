@@ -23,13 +23,10 @@ concurrency:
   group: FrontEnd
   cancel-in-progress: true
 jobs:
-  greeting:
+  Env-Test:
     runs-on: ubuntu-latest
     steps:
     - name : Build
-      run : |
-        echo "Start Build"
-        sleep 5m
-        echo "Task Completed"
+      run : echo "Hello ${{ github.workflow }}-${{ github.ref	}}"
         
       
