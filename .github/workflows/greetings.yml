@@ -19,12 +19,17 @@ on:
         type: string
         default: "None"
 
-concurrency:
-  group: FrontEnd
-  cancel-in-progress: true
+#concurrency:
+  #group: FrontEnd
+  #cancel-in-progress: true
 jobs:
   greeting:
     runs-on: ubuntu-latest
     steps:
-    - name : send greeting
-      run : echo "Hello ${{github.event.inputs.org}}, ${{github.event.inputs.repo}}"
+    - name : Build
+      run : |
+        echo "Start Build"
+        sleep 5m
+        echo "Task Completed"
+        
+      
