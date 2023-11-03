@@ -1,0 +1,35 @@
+name: Greetings
+
+on:
+  workflow_dispatch :
+    inputs:
+      org:
+        description: "invoking org"
+        required: false
+        type: string
+        default: "None"
+      repo:
+        description: "invoking repo"
+        required: false
+        type: string
+        default: "None"
+      check_run_id:
+        description: "check run id to update post job completion"
+        required: false
+        type: string
+        default: "None"
+
+#concurrency:
+  #group: FrontEnd
+  #cancel-in-progress: true
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - name : Build
+      run : |
+        echo "Start Build"
+        sleep 5m
+        echo "Task Completed"
+        
+      
