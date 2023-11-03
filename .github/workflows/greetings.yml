@@ -6,7 +6,7 @@ on:
       name :
        description : "To Greet"
        default : "Friends"
-       required : false
+       required : true
 jobs:
   greeting:
     runs-on: ubuntu-latest
