@@ -10,14 +10,14 @@ on:
         default: "None"
       repo:
         description: "invoking repo"
-        required: false
+        required: true
         type: string
         default: "None"
       check_run_id:
         description: "check run id to update post job completion"
-        required: false
+        required: true
         type: string
-        default: "None"
+        default: "1"
 
 concurrency:
   group: FrontEnd
