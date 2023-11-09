@@ -27,6 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name : Build
-      run : echo "Hello ${{ github.workflow }}-${{ github.ref	}}"
+      run : echo "Hello ${{ github.workflow }}-${{ github.ref}}"
         
       
