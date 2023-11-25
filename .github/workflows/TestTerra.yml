@@ -21,8 +21,8 @@ jobs:
               echo "Error in deriving terraform minimum required version. Got more than one required_version configuration from terraform deployment source : ${versionCoreArray[@]}. Please keep only one required_version configuration."
               exit 1
             else
-              firstVersionVersionConstraint ="${versionCoreArray[0]}"
-              version = $(echo "$firstVersionVersionConstraint" | sed -E 's/[=|!|>|<|~ ]+//g')
+              firstVersionVersionConstraint="${versionCoreArray[0]}"
+              version=$(echo "$firstVersionVersionConstraint" | sed -E 's/[=|!|>|<|~ ]+//g')
               echo "Terraform minimum required version derived from terraform deployment source's required_version : $version"
             fi
           fi
