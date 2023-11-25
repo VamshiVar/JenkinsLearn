@@ -1,17 +1,6 @@
 name: Plan Stage of CD
 on:
   workflow_dispatch:
-    # inputs:
-    #   workdir:
-    #     description: "working directory"
-    #     required: false
-    #     type: string
-    #     default: "app/code"
-    #   tfdir:
-    #     description: "Terraform directory"
-    #     required: false
-    #     type: string
-    #     default: "None"
 
 jobs:
   Planning-Stage:
