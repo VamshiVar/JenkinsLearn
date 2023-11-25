@@ -25,5 +25,4 @@ jobs:
               version = $(echo $firstVersionVersionConstraint | sed -E 's/[=|!|>|<|~ ]+//g')
               echo "Terraform minimum required version derived from terraform deployment source's required_version : $version"
             fi
-            fi
           fi
