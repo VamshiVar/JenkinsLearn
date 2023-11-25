@@ -5,6 +5,8 @@ on:
 jobs:
   Planning-Stage:
     runs-on: ubuntu-latest
+    env:
+      versionCoreData: '10,12'
 
     steps:
       - name: Checkout Repo
@@ -12,7 +14,6 @@ jobs:
 
       - name: getRequiredTfVersion
         run: |
-          versionCoreData = [16, 13]
           if [-n "$versionCoreData"]; then
             versionCoreArray = ($(echo $versionCoreData | jq -r '.[]'))
             echo $versionCoreArray
