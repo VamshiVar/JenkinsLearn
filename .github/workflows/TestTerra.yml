@@ -16,5 +16,18 @@ jobs:
         run: |
           if [-n "$versionCoreData"]; then
             versionCoreArray = $(echo $versionCoreData | jq -r '.[]')
-            echo "${versionCoreArray}"
+
+            if [ "${#versionCoreArray[@]}" -gt 1 ]; then
+              echo "Error in deriving terraform minimum required version. Got more than one required_version configuration from terraform deployment source : ${versionCoreArray[@]}. Please keep only one required_version configuration."
+              exit 1
+            else
+              firstVersionVersionConstraint = $(echo ${versionCoreArray[0]} | cut -d',' -fi)
+              version = $(echo $firstVersionVersionConstraint | sed -E 's/[=|!|>|<|~ ]+//g')
+              echo "Terraform minimum required version derived from terraform deployment source's required_version : $version"
+            fi
+
+              if ! echo "$version" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+               echo "Invalid terrform version ($version) configured in terrform deployment source as required version. Expected format MAJOR.MINOR.PATCH."
+               exit 1
+              fi
           fi
