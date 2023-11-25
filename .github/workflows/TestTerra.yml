@@ -1,4 +1,4 @@
-name: Plan Stage of CD
+name: Test Plan Stage of CD
 on:
   workflow_dispatch:
 
