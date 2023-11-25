@@ -12,7 +12,7 @@ jobs:
 
       - name: getRequiredTfVersion
         run: |
-          versionCoreData = [12.1.0, 13]
+          versionCoreData = [16, 13]
           if [-n "$versionCoreData"]; then
             versionCoreArray = ($(echo $versionCoreData | jq -r '.[]'))
             echo $versionCoreArray
