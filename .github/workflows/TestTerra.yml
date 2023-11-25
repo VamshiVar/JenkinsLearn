@@ -1,0 +1,18 @@
+name: Plan Stage of CD
+on:
+  workflow_dispatch:
+
+jobs:
+  Planning-Stage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: getRequiredTfVersion
+        run: |
+          versionCoreData = [12.1.0, 13]
+          if [-n "$versionCoreData"]; then
+            versionCoreArray = ($(echo $versionCoreData | jq -r '.[]'))
+            echo $versionCoreArray
