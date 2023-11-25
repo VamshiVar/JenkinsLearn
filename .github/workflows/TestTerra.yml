@@ -6,7 +6,7 @@ jobs:
   Planning-Stage:
     runs-on: ubuntu-latest
     env:
-      versionCoreData: '10=,!'
+      versionCoreData: '10=!'
 
     steps:
       - name: Checkout Repo
