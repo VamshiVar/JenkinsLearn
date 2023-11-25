@@ -6,7 +6,7 @@ jobs:
   Planning-Stage:
     runs-on: ubuntu-latest
     env:
-      versionCoreData: '10=,'
+      versionCoreData: '10=,12!'
 
     steps:
       - name: Checkout Repo
@@ -23,6 +23,7 @@ jobs:
             else
               firstVersionVersionConstraint="${versionCoreArray[0]}"
               version=$(echo "$firstVersionVersionConstraint" | sed -E 's/[=|!|>|<|~ ]+//g')
+              echo "${version}"
               echo "Terraform minimum required version derived from terraform deployment source's required_version : $version"
             fi
           fi
