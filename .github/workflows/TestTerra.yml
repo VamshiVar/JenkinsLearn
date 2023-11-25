@@ -16,7 +16,17 @@ jobs:
         run: |
           if [ -n "$versionCoreData" ]; then
             IFS=',' read -ra versionCoreArray <<< "$versionCoreData"
-            for version in "${versionCoreArray[@]}"; do
-             echo "$version"
+            for version_get in "${versionCoreArray[@]}"; do
+             echo "$version_get"
             done
+
+            if [ "${#version_get[@]}" -gt 1 ]; then
+              echo "Error in deriving terraform minimum required version. Got more than one required_version configuration from terraform deployment source : ${version_get[@]}. Please keep only one required_version configuration."
+              exit 1
+            else
+              firstVersionVersionConstraint = $(echo ${version_get[0]} | cut -d',' -fi)
+              version = $(echo $firstVersionVersionConstraint | sed -E 's/[=|!|>|<|~ ]+//g')
+              echo "Terraform minimum required version derived from terraform deployment source's required_version : $version"
+            fi
+            
           fi
