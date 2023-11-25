@@ -1,0 +1,54 @@
+name: Plan Stage of CD
+on:
+  workflow_dispatch:
+    # inputs:
+    #   workdir:
+    #     description: "working directory"
+    #     required: false
+    #     type: string
+    #     default: "app/code"
+    #   tfdir:
+    #     description: "Terraform directory"
+    #     required: false
+    #     type: string
+    #     default: "None"
+
+jobs:
+  Planning-Stage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: getRequiredTfVersion
+        run: |
+          versionCoreData = 12.1.0
+          if [-n "$versionCoreData"]; then
+            versionCoreArray = ($(echo $versionCoreData | jq -r '.[]'))
+
+            if [ "${#versionCoreArray[@]}" -gt 1 ]; then
+              echo "Error in deriving terraform minimum required version. Got more than one required_version configuration from terraform deployment source : ${versionCoreArray[@]}. Please keep only one required_version configuration."
+              exit 1
+            else
+              firstVersionVersionConstraint = $(echo ${versionCoreArray[0]} | cut -d',' -fi)
+              version = $(echo $firstVersionVersionConstraint | sed -E 's/[=|!|>|<|~ ]+//g')
+              echo "Terraform minimum required version derived from terraform deployment source's required_version : $version"
+            fi
+
+              if ! echo "$version" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+               echo "Invalid terrform version ($version) configured in terrform deployment source as required version. Expected format MAJOR.MINOR.PATCH."
+               exit 1
+              fi
+          fi
+
+      - name: Terraform Plan
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(toJSON(github.event.commits), 'skipTfPlanValidation')}}
+        run: |
+          cd app/code/deploy
+          terraform init
+          terraform plan -out=tf.plan
+          terraform show -json tf.plan > tfplan.json
+
+        # Condition is based on push event to main branch and absence of "skipTfPlanValidation" in commit messages.
+        # The above terraform command generate JSON representation of Terraform plan(tf.plan) and saves it as 'tfplan.json'
