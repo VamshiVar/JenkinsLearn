@@ -17,3 +17,4 @@ jobs:
           if [-n "$versionCoreData"]; then
             versionCoreArray = $(echo $versionCoreData | jq -r '.[]')
             echo ${versionCoreArray}
+          fi
