@@ -15,7 +15,7 @@ jobs:
       - name: getRequiredTfVersion
         run: |
           if [ -n "$versionCoreData" ]; then
-            versionCoreArray = $(echo $versionCoreData | tr ','' ')
+            versionCoreArray =($(echo $versionCoreData | tr ','' '))
             for version in "${versionCoreArray[@]}"; do
              echo "$version"
             done
