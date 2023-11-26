@@ -40,3 +40,6 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: ${{ env.version }}
+
+      - name: Print Terraform Version
+        run: echo "terraform --version"
