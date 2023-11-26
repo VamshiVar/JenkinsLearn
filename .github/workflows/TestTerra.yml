@@ -42,6 +42,4 @@ jobs:
           terraform_version: ${{ env.version }}
 
       - name: Print Terraform Version
-        run: |
-          Ter_Ver=terraform version
-          echo "Installed version of Terraform is $Ter_Ver"
+        run: terraform version
