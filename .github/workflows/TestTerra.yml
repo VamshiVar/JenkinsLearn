@@ -43,5 +43,5 @@ jobs:
 
       - name: Print Terraform Version
         run: |
-          Ter_Ver = terraform --version
+          Ter_Ver=terraform --version
           echo "Installed version of Terraform is $Ter_Ver"
