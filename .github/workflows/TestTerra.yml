@@ -13,6 +13,11 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.version }}
+
       - name: getRequiredTfVersion
         run: |
           if [ -n "$versionCoreData" ]; then
@@ -35,11 +40,6 @@ jobs:
                 echo "Installing Terraform version $version"
               fi
           fi
-
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: ${{ env.version }}
 
       - name: Print Terraform Version
         run: terraform version
