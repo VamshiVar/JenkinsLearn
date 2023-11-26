@@ -28,7 +28,7 @@ jobs:
               echo "${version}"
               echo "Terraform minimum required version derived from terraform deployment source's required_version : $version"
             fi
-              if[[ "$(echo -e "$version\n$versionRestrictFrom" | sort -V | head -n1)" == "$versionRestrictFrom" ]]; then
+              if [ "$(echo -e "$version\n$versionRestrictFrom" | sort -V | head -n1)" == "$versionRestrictFrom" ]; then
                echo "The provided Terraform version is restricted for usage. If you have any concerns, please get in touch with the Chofer DevEx Team via the Chofer Chare channel"
               fi
           fi
