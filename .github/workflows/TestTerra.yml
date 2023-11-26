@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       versionCoreData: '10.3.4'
+      versionRestrictFrom: '1.6'
 
     steps:
       - name: Checkout Repo
@@ -17,6 +18,7 @@ jobs:
           if [ -n "$versionCoreData" ]; then
             IFS=',' read -ra versionCoreArray <<< "$versionCoreData"
             echo "${versionCoreArray[@]}"
+            
             if [ "${#versionCoreArray[@]}" -gt 1 ]; then
               echo "Error in deriving terraform minimum required version. Got more than one required_version configuration from terraform deployment source : ${versionCoreArray[@]}. Please keep only one required_version configuration."
               exit 1
@@ -25,5 +27,9 @@ jobs:
               version=$(echo "$firstVersionVersionConstraint" | sed -E 's/[=|!|>|<|~ ]+//g')
               echo "${version}"
               echo "Terraform minimum required version derived from terraform deployment source's required_version : $version"
+
+              if[[ "$(echo -e "$version\n$versionRestrictFrom" | sort -V | head -n1)" == "$versionRestrictFrom" ]]; then
+               echo "The provided Terraform version is restricted for usage. If you have any concerns, please get in touch with the Chofer DevEx Team via the Chofer Chare channel"
+              fi
             fi
           fi
