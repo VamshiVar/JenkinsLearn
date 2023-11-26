@@ -13,11 +13,6 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: ${{ env.version }}
-
       - name: getRequiredTfVersion
         run: |
           if [ -n "$versionCoreData" ]; then
@@ -35,5 +30,13 @@ jobs:
             fi
               if [ "$(echo -e "$version\n$versionRestrictFrom" | sort -V | head -n1)" == "$versionRestrictFrom" ]; then
                echo "The provided Terraform version is restricted for usage. If you have any concerns, please get in touch with the Chofer DevEx Team via the Chofer Chare channel"
+               exit 1
+              else
+                echo "Installing Terraform version $version"
               fi
           fi
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.version }}
