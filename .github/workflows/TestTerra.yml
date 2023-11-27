@@ -34,13 +34,14 @@ jobs:
                exit 1
               else
                 echo "Installing Terraform version $version"
+                echo "::set-env name=TF_VERSION::$version"
               fi
           fi
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: '${{ env.version }}'
+          terraform_version: '${{ env.TF_VERSION }}'
 
       - name: Print Terraform Version
         run: terraform version
