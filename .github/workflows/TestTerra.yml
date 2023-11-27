@@ -8,6 +8,7 @@ jobs:
     env:
       versionCoreData: '0.13.5'
       versionRestrictFrom: '1.6'
+      version: ''
 
     steps:
       - name: Checkout Repo
@@ -39,7 +40,7 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: '0.13.5'
+          terraform_version: ${{ env.version }}
 
       - name: Print Terraform Version
         run: terraform version
