@@ -37,7 +37,7 @@ jobs:
                exit 1
               else
                 echo "Installing Terraform version $version"
-                echo "TERRAFORM_VERSION=$version" >> $GITHUB_ENV
+                echo "TERRAFORM_VERSION=$version"
               fi
           fi
 
