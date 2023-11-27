@@ -40,7 +40,7 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: '${{ version }}'
+          terraform_version: '$version'
 
       - name: Print Terraform Version
         run: terraform version
