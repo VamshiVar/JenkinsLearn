@@ -2,10 +2,6 @@ name: Test Plan Stage of CD
     
 on:
   workflow_dispatch:
-    outputs:
-      version:
-        description: "Getting the Version"
-        value: ${{ steps.getRequiredTfVersion.outputs.version }}
 
 jobs:
   Planning-Stage:
