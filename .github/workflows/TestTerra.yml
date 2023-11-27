@@ -1,7 +1,11 @@
 name: Test Plan Stage of CD
+    
 on:
-  workflow_dispatch:
-
+  workflow_call:
+    outputs:
+      version:
+        description: "Deriving the Version"
+        value: ${{ steps.getRequiredTfVersion.outputs.version }}
 jobs:
   Planning-Stage:
     runs-on: ubuntu-latest
