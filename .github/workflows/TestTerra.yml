@@ -9,7 +9,7 @@ jobs:
     outputs:
         id: terraform_version
     env:
-      versionCoreData: '0.13.5'
+      versionCoreData: '1.6.1'
       versionRestrictFrom: '1.6'
 
     steps:
