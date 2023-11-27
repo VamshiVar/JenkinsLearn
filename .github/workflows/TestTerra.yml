@@ -34,7 +34,7 @@ jobs:
                exit 1
               else
                 echo "Installing Terraform version $version"
-                echo "Print the version ${{ steps.getRequiredTfVersion.version}}"
+                echo "Print the version ${{ steps.getRequiredTfVersion.version }}"
               fi
           fi
 
