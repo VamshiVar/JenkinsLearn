@@ -41,7 +41,7 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: ${{ steps.getRequiredTfVersion.version}}
+          terraform_version: ${{ steps.getRequiredTfVersion.outputs.version}}
 
       - name: Print Terraform Version
         run: terraform version
