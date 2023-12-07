@@ -48,7 +48,8 @@ jobs:
 
       - name: Invoke Make File
         run: |
-            TCLI = terraform
+            TCLI=terraform
             if [ TCLI == terraform ]
                 echo "Upgrade System"
+            fi
         
