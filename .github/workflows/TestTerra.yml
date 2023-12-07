@@ -51,5 +51,4 @@ jobs:
             TCLI=terraform
             if [ TCLI == terraform ]
                 echo "Upgrade System"
-            fi
         
