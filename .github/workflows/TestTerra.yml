@@ -48,9 +48,9 @@ jobs:
 
       - name: Invoke Make File
         run: |
-	 	TCLI=terraform
-         	if [ "$TCLI" == "terraform" ]; then
-         	$TCLI init -upgrade
-         fi
+            TCLI=terraform
+            if [ "$TCLI" == "terraform" ]; then
+                $TCLI init -upgrade
+            fi
             
         
