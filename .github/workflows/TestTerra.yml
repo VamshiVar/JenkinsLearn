@@ -49,7 +49,7 @@ jobs:
       - name: Invoke Versions
         run: |
             terragrunt --version
-	        terraform --version
+	    terraform --version
 
       - name: Invoke Make File
         run: |
