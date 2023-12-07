@@ -46,6 +46,11 @@ jobs:
         with:
           terraform_version: ${{ env.TERRAFORM_VERSION }}
 
+      - name: Invoke Versions
+        run: |
+            terragrunt --version
+	        terraform --version
+
       - name: Invoke Make File
         run: |
             TCLI=terraform
