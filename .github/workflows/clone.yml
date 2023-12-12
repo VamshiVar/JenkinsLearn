@@ -5,7 +5,7 @@ on:
     inputs:
         git_url:
             type: string
-            default: https://github.com/VamshiVar/JenkinsLearn
+            default: https://github.com/VamshiVar/Actions_Learn
 
 jobs:
   Clone-Repo:
