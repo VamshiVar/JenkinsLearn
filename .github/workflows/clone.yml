@@ -2,6 +2,10 @@ name: Clone a Repo
     
 on:
   workflow_dispatch:
+    inputs:
+        git_url:
+            type: string
+            default: https://github.com/VamshiVar/JenkinsLearn
 
 jobs:
   Clone-Repo:
@@ -18,7 +22,7 @@ jobs:
       - name: clone the repo
         id: getVersion
         run: |
-          git clone https://$GIT_USER:$GIT_PAT@github.com/VamshiVar/JenkinsLearn app/code
+          git clone ${{ inputs.git_url }} app/code
 
       - name: List contents
         run: ls -ltr
