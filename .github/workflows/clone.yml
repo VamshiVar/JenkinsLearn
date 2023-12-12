@@ -14,5 +14,5 @@ jobs:
       - name: clone the repo
         id: getVersion
         run: |
-          git clone https://'${{ secrets.GIT_USER }}':'${{ secrets.GIT_PAT }}'@github.com/VamshiVar/JenkinsLearn.git app/code
+          git clone https://${{ secrets.GIT_USER }}:${{ secrets.GIT_PAT }}@github.com/VamshiVar/JenkinsLearn.git app/code
           ls -ltr
