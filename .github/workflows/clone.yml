@@ -20,5 +20,5 @@ jobs:
         run: |
           git clone https://${GIT_USER}:${GIT_PAT}@github.com/VamshiVar/JenkinsLearn app/code
           cd app/code
-          ls -altr
+          ls -ltr
          
