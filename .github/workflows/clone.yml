@@ -1,0 +1,18 @@
+name: Clone a Repo
+    
+on:
+  workflow_dispatch:
+
+jobs:
+  Clone-Repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: clone the repo
+        id: getVersion
+        run: |
+          git clone https://'${{ secrets.GIT_USER }}':'${{ secrets.GIT_PAT }}'@github.com/VamshiVar/JenkinsLearn app/code
+          ls -ltr
