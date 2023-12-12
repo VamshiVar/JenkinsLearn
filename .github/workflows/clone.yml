@@ -21,5 +21,5 @@ jobs:
           git clone https://${GIT_USER}:${GIT_PAT}@github.com/VamshiVar/SSHRepo app/code
 
       - name: List contents
-        run: ls -altr
+        run: ls -ltr
          
