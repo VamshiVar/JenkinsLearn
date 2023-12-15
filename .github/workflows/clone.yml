@@ -19,6 +19,5 @@ jobs:
         id: getVersion
         run: |
           git clone https://${GIT_USER}:${GIT_PAT}@github.com/VamshiVar/JenkinsLearn app/code
-          cd app/code
-          ls -ltr
+          versionCoreData=cd app/code && terraform-config-inspect --json deploy | jq  -r '.required_core //empty'", returnStdout: true)
          
