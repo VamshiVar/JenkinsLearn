@@ -21,7 +21,7 @@ jobs:
         run: |
           versionCoreData=[">= 0.13.5"]
           versionCoreData=$(echo "$versionCoreData" | tr -d '[]')
-          echo "${versionCoreData}"
+          echo "The required version is : ${versionCoreData}"
           if [ -n "$versionCoreData" ]; then
             IFS=',' read -ra versionCoreArray <<< "$versionCoreData"
             echo "${versionCoreArray[@]}"
