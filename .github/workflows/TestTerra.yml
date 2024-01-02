@@ -9,8 +9,8 @@ jobs:
     outputs:
         id: terraform_version
     env:
-      versionCoreData: '1.6.1'
-      versionRestrictFrom: '1.6'
+      versionCoreData: "0.13.1"
+      versionRestrictFrom: "1.6"
 
     steps:
       - name: Checkout Repo
