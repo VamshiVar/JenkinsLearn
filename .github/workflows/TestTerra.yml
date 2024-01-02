@@ -20,7 +20,7 @@ jobs:
         id: getVersion
         run: |
           versionCoreData=[">= 0.13.5"]
-          versionCoreData=$(echo "$versionCoreData" | sed -E 's/[=|!|>|<|~ ]+//g')
+          versionCoreData=$(echo "$versionCoreData" | sed -E 's/[][=|!|>|<|~ ]+//g')
           if [ -n "$versionCoreData" ]; then
             IFS=',' read -ra versionCoreArray <<< "$versionCoreData"
             echo "${versionCoreArray[@]}"
