@@ -9,7 +9,7 @@ jobs:
     outputs:
         id: terraform_version
     env:
-      versionCoreData: ">= 0.13.5"
+      #versionCoreData: ">= 0.13.5"
       versionRestrictFrom: "1.6"
 
     steps:
@@ -19,6 +19,7 @@ jobs:
       - name: getRequiredTfVersion
         id: getVersion
         run: |
+          versionCoreData=[">= 0.13.5"]
           if [ -n "$versionCoreData" ]; then
             IFS=',' read -ra versionCoreArray <<< "$versionCoreData"
             echo "${versionCoreArray[@]}"
